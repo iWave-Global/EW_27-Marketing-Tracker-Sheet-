@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EW27 Marketing Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">iWave Global · Embedded World 2027</p>
+        <h1>Marketing Tracker</h1>
+        <p class="subtitle">Live task progress, ownership, and target-date warnings</p>
+      </div>
+      <div class="header-actions">
+        <span id="syncState" class="sync-state">Connecting…</span>
+        <button id="refreshBtn" class="button secondary">Refresh</button>
+      </div>
+    </header>
+
+
+    <section class="stats-grid" id="statsGrid">
+      <article class="stat-card"><span>Total Tasks</span><strong id="totalCount">—</strong></article>
+      <article class="stat-card"><span>Start</span><strong id="startCount">—</strong></article>
+      <article class="stat-card"><span>Processing</span><strong id="processingCount">—</strong></article>
+      <article class="stat-card"><span>Complated</span><strong id="completedCount">—</strong></article>
+      <article class="stat-card warning-card"><span>Overdue</span><strong id="overdueCount">—</strong></article>
+      <article class="stat-card soon-card"><span>Due in 7 days</span><strong id="soonCount">—</strong></article>
+    </section>
+
+
+    <section class="toolbar">
+      <div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Search tasks, owners, status…" /></div>
+      <div class="filter-wrap">
+        <label for="statusFilter">Status</label>
+        <select id="statusFilter"><option value="all">All statuses</option><option>Start</option><option>Processing</option><option>Complated</option></select>
+      </div>
+      <div class="filter-wrap">
+        <label for="groupFilter">Section</label>
+        <select id="groupFilter"><option value="all">All sections</option><option value="marketing">Marketing Plan</option><option value="activity">Dinoop &amp; Mariraj Activity</option></select>
+      </div>
+    </section>
+
+
+    <section class="table-panel">
+      <div class="panel-heading"><div><h2>Task list</h2><p>Rename task and change status here. Target dates are maintained in the source Google Sheet.</p></div><span id="visibleCount" class="count-pill">0 tasks</span></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Section</th><th>Task / Activity</th><th>Owner / Review</th><th>Target Date</th><th>Status</th><th>Deadline</th><th>Save</th></tr></thead>
+          <tbody id="taskRows"><tr><td colspan="7" class="empty">Loading sheet data…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <footer><span>Data source: original Google Sheet</span><a id="sourceLink" target="_blank" rel="noreferrer">Open source sheet ↗</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
